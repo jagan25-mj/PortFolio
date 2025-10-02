@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://boss-portfolio.com/sitemap.xml
