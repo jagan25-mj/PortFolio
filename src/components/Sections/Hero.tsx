@@ -39,7 +39,7 @@ export default function Hero() {
             </motion.div>
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-space-grotesk leading-tight">
-              <span className="text-blue-400 text-glow">Boss</span> —{' '}
+              <span className="text-blue-400 text-glow">Jagan Murari</span> —{' '}
               <span className="bg-gradient-to-r from-lime-400 to-blue-400 bg-clip-text text-transparent">
                 ML + Full-Stack Engineer
               </span>
@@ -48,8 +48,8 @@ export default function Hero() {
               I build AI-powered web applications with{' '}
               <span className="text-blue-400 font-semibold">React</span>,{' '}
               <span className="text-lime-400 font-semibold">Django</span>,{' '}
-              <span className="text-coral-400 font-semibold">PyTorch</span> &{' '}
-              <span className="text-blue-400 font-semibold">LangChain</span>.
+              <span className="text-coral-400 font-semibold">PyTorch</span> {' '}
+              <span className="text-blue-400 font-semibold"></span>.
             </p>
           </motion.div>
 

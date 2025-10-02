@@ -1,10 +1,11 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useFrame } from '@react-three/fiber';
 import { Canvas } from '@react-three/fiber';
 import { Sparkles, Cpu, Network } from 'lucide-react';
 import * as THREE from 'three';
+import { Link } from 'react-router-dom'; // <-- ADDED
 
 function NetworkVisualization() {
   const groupRef = useRef<THREE.Group>(null!);
@@ -70,7 +71,7 @@ function NetworkVisualization() {
             
             {/* Connections to next layer */}
             {layerIndex < layers.length - 1 && (
-              <>
+              <React.Fragment key={`conns-${layerIndex}`}>
                 {nodes.map((startPos, startIndex) => {
                   const nextLayer = layers[layerIndex + 1];
                   const nextNodes = Array.from({ length: nextLayer.nodes }, (_, i) => {
@@ -100,7 +101,7 @@ function NetworkVisualization() {
                     </line>
                   ));
                 })}
-              </>
+              </React.Fragment>
             )}
           </group>
         );
@@ -226,12 +227,17 @@ export default function Playground() {
                         <p className="text-gray-300 text-sm leading-relaxed font-light">
                           {project.description}
                         </p>
-                        <motion.div
-                          whileHover={{ x: 8 }}
-                          className="mt-4 inline-flex items-center text-blue-400 text-sm font-medium group-hover:text-lime-400 transition-colors duration-300"
-                        >
-                          Try Demo →
-                        </motion.div>
+
+                        {/* <-- REPLACED the static Try Demo block with a SPA Link */}
+                        <div className="mt-4">
+                          <Link
+                            to={`/demos/${project.id}`}
+                            className="inline-flex items-center text-blue-400 text-sm font-medium group-hover:text-lime-400 transition-colors duration-300"
+                          >
+                            Try Demo →
+                          </Link>
+                        </div>
+
                       </div>
                     </div>
                   </motion.div>

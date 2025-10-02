@@ -33,7 +33,7 @@ export default function Contact() {
     },
     {
       name: 'Email',
-      url: 'mailto:boss@example.com',
+      url: 'mailto:murarijagansai@gmail.com.com',
       icon: Mail,
       color: 'hover:text-lime-400 hover:bg-lime-400/10',
       description: 'Send me a direct message'
