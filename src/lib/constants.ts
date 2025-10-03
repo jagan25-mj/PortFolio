@@ -29,8 +29,8 @@ export const PROJECTS = [
     stack: ['React', 'Django', 'PyTorch', 'Three.js'],
     role: 'Full-Stack Developer',
     links: {
-      live: 'https://dream-sketch.demo',
-      github: 'https://github.com/boss/dream-sketch-ai',
+      live: 'https://github.com/jagan25-mj/Dream_Sketch-AI',
+      github: 'https://github.com/jagan25-mj/Dream_Sketch-AI',
     },
     highlights: [
       'Custom diffusion pipeline optimized for anime-style generation',
@@ -47,8 +47,8 @@ export const PROJECTS = [
     stack: ['Django', 'JavaScript', 'HTML', 'CSS'],
     role: 'Full-Stack Developer',
     links: {
-      live: 'https://snake-game.demo',
-      github: 'https://github.com/boss/snake-game',
+      live: 'https://github.com/jagan25-mj/SNAKE_GAME',
+      github: 'https://github.com/jagan25-mj/SNAKE_GAME',
     },
     highlights: [
       'Real-time game mechanics with smooth animations',

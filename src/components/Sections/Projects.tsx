@@ -191,7 +191,7 @@ export default function Projects() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="https://github.com/boss"
+              href="https://github.com/jagan25-mj"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 px-6 py-3 bg-slate-800 border border-slate-600 text-gray-300 rounded-lg hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
