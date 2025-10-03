@@ -72,7 +72,7 @@ function App() {
           <div className="container mx-auto px-6">
             <div className="text-center">
               <p className="text-gray-400 text-sm">
-                © 2025 Boss. Built with React, Three.js, and lots of ☕
+                © 2025 Jagan Murari. Built with React, Three.js, and lots of ☕
               </p>
               <p className="text-gray-500 text-xs mt-2">
                 Designed and developed with passion for innovation

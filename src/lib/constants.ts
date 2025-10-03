@@ -17,7 +17,6 @@ export const SECTIONS = [
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'playground', label: 'Demos' },
-  { id: 'notes', label: 'Notes' },
   { id: 'contact', label: 'Contact' },
 ] as const;
 
@@ -37,7 +36,7 @@ export const PROJECTS = [
       'GPU-accelerated inference with WebGL previews',
       'Real-time style transfer with 3D composition',
     ],
-    cover: 'https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=800',
+    cover: 'https://images.pexels.com/photos/8294593/pexels-photo-8294593.jpeg?auto=compress&cs=tinysrgb&w=800',
     featured: true,
   },
   {
@@ -55,7 +54,7 @@ export const PROJECTS = [
       'Django REST API for high score management',
       'Responsive design with touch controls for mobile',
     ],
-    cover: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800',
+    cover: 'https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=800',
     featured: true,
   },
 ];

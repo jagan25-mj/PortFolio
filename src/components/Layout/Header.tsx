@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Sun, Moon, Github, Linkedin, Twitter } from 'lucide-react';
+import { Menu, X, Download, Github, Linkedin, Instagram } from 'lucide-react';
 import { useAppStore } from '../../lib/store';
 import { SECTIONS } from '../../lib/constants';
 
@@ -51,7 +51,7 @@ export default function Header() {
             className="text-2xl font-bold text-white cursor-pointer font-space-grotesk"
             onClick={() => scrollToSection('hero')}
           >
-            <span className="text-blue-400 text-glow">B</span>oss
+            <span className="text-blue-400 text-glow">J</span>agan <span className="text-lime-400">M</span>urari
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -73,11 +73,11 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Theme Toggle & Social Links */}
+          {/* Social Links & Resume */}
           <div className="hidden md:flex items-center space-x-4">
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
-              href="https://github.com/boss"
+              href="https://github.com/jagan25-mj"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-gray-300 hover:text-blue-400 transition-all duration-300 rounded-lg hover:bg-blue-400/10"
@@ -86,7 +86,7 @@ export default function Header() {
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
-              href="https://linkedin.com/in/boss"
+              href="https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3BJPLi6cZoQfi5Lfz5IMV%2BRQ%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-gray-300 hover:text-blue-400 transition-all duration-300 rounded-lg hover:bg-blue-400/10"
@@ -95,24 +95,26 @@ export default function Header() {
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
-              href="https://twitter.com/boss"
+              href="https://www.instagram.com/mj__iq__/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-gray-300 hover:text-blue-400 transition-all duration-300 rounded-lg hover:bg-blue-400/10"
+              className="p-2 text-gray-300 hover:text-pink-400 transition-all duration-300 rounded-lg hover:bg-pink-400/10"
             >
-              <Twitter size={20} />
+              <Instagram size={20} />
             </motion.a>
-            
+
             <div className="w-px h-6 bg-slate-600 mx-2"></div>
-            
-            <motion.button
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-lg glass-morphism-light text-gray-300 hover:text-white transition-all duration-300 hover:bg-blue-400/10"
+
+            <motion.a
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              href="/Murari_Jagan_Sai_Django_Resume_IFQWH7g.pdf"
+              download="Jagan_Murari_Resume.pdf"
+              className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-lime-400 to-lime-500 text-slate-900 font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
             >
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            </motion.button>
+              <Download size={16} />
+              <span className="text-sm">Resume</span>
+            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -150,7 +152,7 @@ export default function Header() {
             ))}
             <div className="flex items-center space-x-4 px-3 pt-4">
               <a
-                href="https://github.com/boss"
+                href="https://github.com/jagan25-mj"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
@@ -158,7 +160,7 @@ export default function Header() {
                 <Github size={20} />
               </a>
               <a
-                href="https://linkedin.com/in/boss"
+                href="https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3BJPLi6cZoQfi5Lfz5IMV%2BRQ%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
@@ -166,19 +168,21 @@ export default function Header() {
                 <Linkedin size={20} />
               </a>
               <a
-                href="https://twitter.com/boss"
+                href="https://www.instagram.com/mj__iq__/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
               >
-                <Twitter size={20} />
+                <Instagram size={20} />
               </a>
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-lg bg-slate-800 text-gray-300 hover:text-white transition-colors"
+              <a
+                href="/Murari_Jagan_Sai_Django_Resume_IFQWH7g.pdf"
+                download="Jagan_Murari_Resume.pdf"
+                className="flex items-center space-x-2 px-3 py-2 bg-lime-400 text-slate-900 font-semibold rounded-lg text-sm"
               >
-                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-              </button>
+                <Download size={16} />
+                <span>Resume</span>
+              </a>
             </div>
           </nav>
         </motion.div>
