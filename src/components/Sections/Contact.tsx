@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Github, Linkedin, Twitter, Mail, MessageCircle, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, MessageCircle, ExternalLink } from 'lucide-react';
 
 export default function Contact() {
   const [ref, inView] = useInView({
@@ -12,28 +12,28 @@ export default function Contact() {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/boss',
+      url: 'https://github.com/jagan25-mj',
       icon: Github,
       color: 'hover:text-blue-400 hover:bg-blue-400/10',
       description: 'Check out my code and projects'
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/boss',
+      url: 'https://www.linkedin.com/public-profile/settings?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_contact-info%3BJPLi6cZoQfi5Lfz5IMV%2BRQ%3D%3D',
       icon: Linkedin,
       color: 'hover:text-blue-400 hover:bg-blue-400/10',
       description: 'Connect with me professionally'
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/boss',
-      icon: Twitter,
-      color: 'hover:text-blue-400 hover:bg-blue-400/10',
+      name: 'Instagram',
+      url: 'https://www.instagram.com/mj__iq__/',
+      icon: Instagram,
+      color: 'hover:text-pink-400 hover:bg-pink-400/10',
       description: 'Follow my tech journey'
     },
     {
       name: 'Email',
-      url: 'mailto:murarijagansai@gmail.com.com',
+      url: 'mailto:murarijagansai@gmail.com',
       icon: Mail,
       color: 'hover:text-lime-400 hover:bg-lime-400/10',
       description: 'Send me a direct message'
