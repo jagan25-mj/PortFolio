@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useFrame } from '@react-three/fiber';
 import { Canvas } from '@react-three/fiber';
-import { Network } from 'lucide-react';
+import { Sparkles, Cpu, Network } from 'lucide-react';
 import * as THREE from 'three';
+import { Link } from 'react-router-dom'; // <-- ADDED
 
 function NetworkVisualization() {
   const groupRef = useRef<THREE.Group>(null!);
@@ -109,129 +110,32 @@ function NetworkVisualization() {
   );
 }
 
-function MLRobot() {
-  const robotRef = useRef<THREE.Group>(null!);
-  const eyeLeftRef = useRef<THREE.Mesh>(null!);
-  const eyeRightRef = useRef<THREE.Mesh>(null!);
-  const dataParticlesRef = useRef<THREE.Group>(null!);
-
-  useFrame(({ clock }) => {
-    if (robotRef.current) {
-      robotRef.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.5) * 0.3;
-      robotRef.current.position.y = Math.sin(clock.getElapsedTime() * 0.8) * 0.1;
-    }
-
-    if (eyeLeftRef.current && eyeRightRef.current) {
-      const blinkPhase = Math.sin(clock.getElapsedTime() * 2);
-      const scaleY = blinkPhase > 0.95 ? 0.3 : 1;
-      eyeLeftRef.current.scale.y = scaleY;
-      eyeRightRef.current.scale.y = scaleY;
-    }
-
-    if (dataParticlesRef.current) {
-      dataParticlesRef.current.rotation.y = clock.getElapsedTime() * 0.5;
-      dataParticlesRef.current.children.forEach((child, i) => {
-        const offset = i * 0.5;
-        child.position.y = Math.sin(clock.getElapsedTime() + offset) * 0.3;
-      });
-    }
-  });
-
-  const createDataParticles = () => {
-    const particles = [];
-    for (let i = 0; i < 20; i++) {
-      const angle = (i / 20) * Math.PI * 2;
-      const radius = 2.5;
-      particles.push(
-        <mesh
-          key={i}
-          position={[
-            Math.cos(angle) * radius,
-            Math.sin(i) * 0.5,
-            Math.sin(angle) * radius
-          ]}
-        >
-          <octahedronGeometry args={[0.05, 0]} />
-          <meshStandardMaterial
-            color={i % 2 === 0 ? '#4EA8FF' : '#A3FF12'}
-            emissive={i % 2 === 0 ? '#4EA8FF' : '#A3FF12'}
-            emissiveIntensity={0.5}
-          />
-        </mesh>
-      );
-    }
-    return particles;
-  };
-
-  return (
-    <group>
-      <group ref={robotRef}>
-        <mesh position={[0, 0, 0]}>
-          <boxGeometry args={[1.2, 1.5, 1]} />
-          <meshStandardMaterial color="#1e293b" metalness={0.8} roughness={0.2} />
-        </mesh>
-
-        <mesh position={[0, 0.9, 0]}>
-          <sphereGeometry args={[0.5, 32, 32]} />
-          <meshStandardMaterial color="#334155" metalness={0.7} roughness={0.3} />
-        </mesh>
-
-        <mesh ref={eyeLeftRef} position={[-0.2, 0.95, 0.4]}>
-          <sphereGeometry args={[0.1, 16, 16]} />
-          <meshStandardMaterial
-            color="#4EA8FF"
-            emissive="#4EA8FF"
-            emissiveIntensity={1}
-          />
-        </mesh>
-        <mesh ref={eyeRightRef} position={[0.2, 0.95, 0.4]}>
-          <sphereGeometry args={[0.1, 16, 16]} />
-          <meshStandardMaterial
-            color="#4EA8FF"
-            emissive="#4EA8FF"
-            emissiveIntensity={1}
-          />
-        </mesh>
-
-        <mesh position={[0, 0.7, 0.45]}>
-          <boxGeometry args={[0.3, 0.05, 0.1]} />
-          <meshStandardMaterial color="#A3FF12" emissive="#A3FF12" emissiveIntensity={0.5} />
-        </mesh>
-
-        <mesh position={[-0.7, 0, 0]}>
-          <cylinderGeometry args={[0.15, 0.15, 1.2, 16]} />
-          <meshStandardMaterial color="#475569" metalness={0.8} roughness={0.2} />
-        </mesh>
-        <mesh position={[0.7, 0, 0]}>
-          <cylinderGeometry args={[0.15, 0.15, 1.2, 16]} />
-          <meshStandardMaterial color="#475569" metalness={0.8} roughness={0.2} />
-        </mesh>
-
-        <mesh position={[-0.3, -1, 0]}>
-          <cylinderGeometry args={[0.15, 0.15, 1, 16]} />
-          <meshStandardMaterial color="#475569" metalness={0.8} roughness={0.2} />
-        </mesh>
-        <mesh position={[0.3, -1, 0]}>
-          <cylinderGeometry args={[0.15, 0.15, 1, 16]} />
-          <meshStandardMaterial color="#475569" metalness={0.8} roughness={0.2} />
-        </mesh>
-
-        <mesh position={[0, 0.2, 0.51]}>
-          <boxGeometry args={[0.6, 0.4, 0.05]} />
-          <meshStandardMaterial
-            color="#0f172a"
-            emissive="#4EA8FF"
-            emissiveIntensity={0.3}
-          />
-        </mesh>
-      </group>
-
-      <group ref={dataParticlesRef}>
-        {createDataParticles()}
-      </group>
-    </group>
-  );
-}
+const demoProjects = [
+  {
+    id: 'text-summarizer',
+    title: 'AI Text Summarizer',
+    description: 'Paste any text and get an AI-generated summary using advanced NLP techniques.',
+    icon: Sparkles,
+    color: 'from-blue-500 to-cyan-500',
+    demo: true,
+  },
+  {
+    id: 'prompt-generator',
+    title: 'Prompt Generator',
+    description: 'Generate creative prompts for AI image generation with style controls.',
+    icon: Cpu,
+    color: 'from-lime-500 to-green-500',
+    demo: true,
+  },
+  {
+    id: 'embeddings-viz',
+    title: 'Embeddings Visualizer',
+    description: 'Visualize word embeddings in 3D space to understand semantic relationships.',
+    icon: Network,
+    color: 'from-coral-500 to-orange-500',
+    demo: true,
+  },
+];
 
 export default function Playground() {
   const [ref, inView] = useInView({
@@ -273,10 +177,10 @@ export default function Playground() {
                   Neural Network Visualization
                 </h3>
                 <p className="text-gray-300 mb-6 font-light">
-                  An interactive 3D representation of a simple neural network architecture,
+                  An interactive 3D representation of a simple neural network architecture, 
                   demonstrating node connections and data flow patterns.
                 </p>
-
+                
                 <div className="h-64 bg-slate-900/50 rounded-lg overflow-hidden border border-slate-700/50 group-hover:border-blue-500/30 transition-all duration-300">
                   <Canvas camera={{ position: [0, 0, 6] }}>
                     <ambientLight intensity={0.4} />
@@ -287,32 +191,58 @@ export default function Playground() {
               </div>
             </motion.div>
 
-            {/* ML Robot Visualization */}
+            {/* Demo Projects */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative"
+              className="space-y-6"
             >
-              <div className="glass-morphism rounded-xl p-8 hover:border-lime-500/50 transition-all duration-300 magnetic-hover group">
-                <h3 className="text-2xl font-semibold text-white mb-4 flex items-center font-space-grotesk">
-                  <Network className="text-blue-400 mr-3" size={28} />
-                  ML Processing Bot
-                </h3>
-                <p className="text-gray-300 mb-6 font-light">
-                  An animated 3D robot representing machine learning data processing.
-                  Watch as it analyzes streaming data particles in real-time.
-                </p>
+              {demoProjects.map((project, index) => {
+                const Icon = project.icon;
+                return (
+                  <motion.div
+                    key={project.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                    whileHover={{ 
+                      scale: 1.02,
+                      boxShadow: '0 20px 40px rgba(78, 168, 255, 0.2)',
+                      y: -3
+                    }}
+                    className="glass-morphism rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 cursor-pointer magnetic-hover group"
+                  >
+                    <div className="flex items-start space-x-4">
+                      <div className={`p-3 bg-gradient-to-r ${project.color} rounded-lg shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon size={24} className="text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-semibold text-white mb-2 flex items-center font-space-grotesk">
+                          {project.title}
+                          <span className="ml-2 px-2 py-1 bg-lime-400/20 text-lime-400 text-xs rounded-full animate-pulse">
+                            DEMO
+                          </span>
+                        </h4>
+                        <p className="text-gray-300 text-sm leading-relaxed font-light">
+                          {project.description}
+                        </p>
 
-                <div className="h-96 bg-slate-900/50 rounded-lg overflow-hidden border border-slate-700/50 group-hover:border-lime-500/30 transition-all duration-300">
-                  <Canvas camera={{ position: [0, 0, 5] }}>
-                    <ambientLight intensity={0.3} />
-                    <pointLight position={[5, 5, 5]} intensity={1} />
-                    <pointLight position={[-5, -5, -5]} intensity={0.5} color="#A3FF12" />
-                    <MLRobot />
-                  </Canvas>
-                </div>
-              </div>
+                        {/* <-- REPLACED the static Try Demo block with a SPA Link */}
+                        <div className="mt-4">
+                          <Link
+                            to={`/demos/${project.id}`}
+                            className="inline-flex items-center text-blue-400 text-sm font-medium group-hover:text-lime-400 transition-colors duration-300"
+                          >
+                            Try Demo →
+                          </Link>
+                        </div>
+
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </div>
 
